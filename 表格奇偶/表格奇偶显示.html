@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+table{
+	border:1px grey inset;
+	}
+tr{
+	background-color:grey;}
+</style>
+<script>
+window.onload=init;
+function init(){
+	if(!document.getElementsByTagName) return false;
+	var table=document.getElementsByTagName('table');
+	for(var i=0;i<table.length;i++){
+		var odd=false;
+		var rows=table[i].getElementsByTagName('tr');
+		for(var j=0;j<rows.length;j++){
+		     if(odd==true){
+				 rows[j].style.backgroundColor='blue';
+				 odd=false;
+				 }
+				 else{
+				 odd=true;
+					 }
+				 }
+		}
+	}
+</script>
+</head>
+
+<body>
+<table>
+<thead>
+<tr>
+<th>where</th>
+<th>time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beijing</td>
+<td>10:00</td>
+</tr>
+<tr>
+<td>shanghai</td>
+<td>12:00</td>
+</tr>
+<tr>
+<td>tianjing</td>
+<td>13:00</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
