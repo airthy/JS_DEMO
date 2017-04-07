@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#main{
+	position:relative;}
+.box{
+   float:left;
+	padding:15px 0 0 15px;
+	}
+.pic{padding:10px;
+border:#666 1px solid;
+}
+.pic img{width:163px;
+height:auto;}
+</style>
+<script>
+window.onload=function(){
+	waterfall('main','box');
+	var dataInt={'data':[{'src':'p_01.jpg'},{'src':'p_02.jpg'},{'src':'p_03.jpg'},{'src':'p_04.jpg'},{'src':'p_05.jpg'},{'src':'p_06.jpg'}]};
+	window.onscroll=function(){
+		if(checkScroll()){
+			var oParent=document.getElementById("main");
+			for(var i=0;i<dataInt.data.length;i++){
+			
+			var oBox=document.createElement('div');
+			oBox.className='box';
+			oParent.appendChild(oBox);
+			var oPic=document.createElement('div');
+			oPic.className='pic';
+			oBox.appendChild(oPic);
+			var oImg=document.createElement('img');
+			oImg.src="./images/"+dataInt.data[i].src;
+			oPic.appendChild(oImg);
+			}
+			waterfall('main','box');
+			}
+			
+		}
+	}
+function waterfall(parent,box){
+	var oParent=document.getElementById(parent);
+	var oBoxs=getClass(oParent,box);
+    var oBoxwid=oBoxs[0].offsetWidth;
+	var cols=Math.floor(document.documentElement.clientWidth/oBoxwid);
+	oParent.style.cssText="width:"+oBoxwid*cols+"px;margin:0 auto;"
+	var hArr=new Array();
+	for(var i=0;i<oBoxs.length;i++){
+		if(i<cols){
+			hArr.push(oBoxs[i].offsetHeight);}
+			else{
+				var minH=Math.min.apply(null,hArr);
+				var index=getHeiInd(hArr,minH);
+				oBoxs[i].style.position="absolute";
+				oBoxs[i].style.left=oBoxwid*index+"px";
+				oBoxs[i].style.top=minH+"px";
+				hArr[index]+=oBoxs[i].offsetHeight;
+				}
+			}
+}
+		
+function getClass(parent,classname){
+	var oBox=new Array();
+	element=parent.getElementsByTagName('*');
+	for(var i=0;i<element.length;i++){
+	if(element[i].className==classname){
+			oBox.push(element[i]);
+			}
+			}
+	return oBox;
+	}	
+	
+
+function getHeiInd(arr,val){
+	for(var i in arr){
+		if(arr[i]==val){
+			return i;
+			}
+		}
+	}
+function checkScroll(){
+	var oParent=document.getElementById("main");
+    var oBoxs=getClass(oParent,'box');
+	var  lastBoxH=oBoxs[oBoxs.length-1].offsetTop+Math.floor(oBoxs[oBoxs.length-1].offsetHeight/2);
+	var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+	var height=document.body.clientHeight||document.documentElement.clientHeight;
+	return (lastBoxH<scrollTop+height)?true:false;
+	}	
+
+</script>
+</head>
+
+<body>
+<div id="main">
+<div class="box">
+<div class="pic">
+<img src="images/P_00.jpg">
+</div>
+</div>
+
+
+<div class="box">
+<div class="pic">
+<img src="images/P_01.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/P_02.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_03.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_04.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_05.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_06.jpg">
+</div>
+</div>
+<div class="box">
+<div class="pic">
+<img src="images/p_07.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_08.jpg">
+</div>
+</div>
+
+
+<div class="box">
+<div class="pic">
+<img src="images/p_09.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_010.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_011.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_012.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_013.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_014.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_015.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_016.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_017.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_018.jpg">
+</div>
+</div>
+
+<div class="box">
+<div class="pic">
+<img src="images/p_019.jpg">
+</div>
+</div>
+
+
+
+
+</div>
+</body>
+</html>
